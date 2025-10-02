@@ -1,0 +1,428 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    padding: 0 47.1875px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, transparent);
+    transition: background-color 0.4s ease;
+    z-index: 2;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 12.036px;
+    line-height: 14.4432px;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.navbar.scrolled {
+    background-color: rgb(20, 20, 20);
+}
+
+.navbarContent {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbarLeft {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.logo {
+    width: auto;
+    height: 65px;
+    margin-right: 25px;
+    margin-top: -5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+    margin: 0;
+    margin-left: -14px;
+    padding: 0;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 12.036px;
+    line-height: 14.4432px;
+    height: 14.4375px;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.navLinks li a {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 16.8px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.navLinks li a:hover {
+    color: #b3b3b3;
+}
+
+.navLinks li a.active {
+    color: #ffffff;
+    font-weight: 500;
+    cursor: default;
+}
+
+.navbarRight {
+    position: absolute;
+    top: 0;
+    right: 40.1875px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-right: 17px;
+    height: 68px;
+    flex-grow: 1;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 12.036px;
+    line-height: 14.4432px;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.searchTab {
+    appearance: button;
+    background: none;
+    border: none;
+    padding: 1px 6px;
+    margin: 0;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jeunesseText {
+    color: #ffffff;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 16.8px;
+    cursor: pointer;
+}
+
+.notificationContainer {
+    position: relative;
+    cursor: pointer;
+}
+
+.notificationMenu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: -2px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 16px;
+    height: 108.156px;
+    line-height: 16px;
+    list-style: none;
+    text-align: left;
+    user-select: none;
+    width: 408px;
+    padding: 10px;
+    z-index: 1000;
+    -webkit-font-smoothing: antialiased;
+}
+
+.notificationMenu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 4px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(255, 255, 255, 0.25);
+}
+
+.notificationItem {
+    display: flex;
+    gap: 0;
+    width: 100%;
+}
+
+.notificationIcon {
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 1;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 16px;
+    height: 108.156px;
+    line-height: 16px;
+    list-style: none;
+    padding: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    user-select: none;
+    width: 144px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.multiLandingStackSpaceHolder {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 16px;
+    height: 63px;
+    line-height: 16px;
+    list-style: none;
+    position: relative;
+    text-align: left;
+    user-select: none;
+    width: 112px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.multiLandingStack {
+    position: absolute;
+    border-radius: 4px;
+}
+
+.multiLandingStack1 {
+    background-color: #dbdbd7;
+    border-radius: 4px;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.5), 0px 0px 2px 0px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 16px;
+    height: 56px;
+    left: 3px;
+    line-height: 16px;
+    list-style: none;
+    position: absolute;
+    text-align: left;
+    top: 2px;
+    width: 103px;
+    user-select: none;
+    z-index: 2;
+    -webkit-font-smoothing: antialiased;
+}
+
+.multiLandingStack2 {
+    background-color: #dbdbd7;
+    border-radius: 4px;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.5), 0px 0px 2px 0px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 16px;
+    height: 56px;
+    left: 7px;
+    line-height: 16px;
+    list-style: none;
+    position: absolute;
+    text-align: left;
+    top: 5px;
+    width: 103px;
+    user-select: none;
+    z-index: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+.titleCard {
+    border-radius: 4px;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.5), 0px 0px 2px 0px rgba(0,0,0,0.5);
+    cursor: pointer;
+    display: block;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 16px;
+    height: 56px;
+    left: 0px;
+    line-height: 16px;
+    list-style: none;
+    overflow: clip;
+    position: absolute;
+    text-align: left;
+    top: 0px;
+    user-select: none;
+    width: 103px;
+    z-index: 3;
+    -webkit-font-smoothing: antialiased;
+}
+
+.multiLandingStackImg {
+    object-fit: cover;
+}
+
+.notificationContent {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 16px;
+    height: 108.156px;
+    justify-content: center;
+    line-height: 19.2px;
+    list-style: none;
+    max-width: 264px;
+    padding: 16px 16px 16px 0;
+    text-align: left;
+    text-decoration: none;
+    user-select: none;
+    width: 264px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.notificationTitle {
+    color: #CCCCCC;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    transition: color 0.3s ease;
+}
+
+.notificationSubtitle {
+    color: #CCCCCC;
+    font-size: 16px;
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.notificationContent:hover .notificationTitle,
+.notificationContent:hover .notificationSubtitle {
+    color: #FFFFFF;
+}
+
+.notificationTime {
+    color: #808080;
+    font-size: 12px;
+}
+
+.profileContainer {
+    position: relative;
+    cursor: pointer;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profileImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.profileArrow {
+    transition: transform 0.3s ease;
+    margin-left: 5px;
+}
+
+.profileArrowRotated {
+    transform: rotate(180deg);
+}
+
+.profileMenu {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    min-width: 220px;
+    width: 220px;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.profileMenu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(255, 255, 255, 0.15);
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    color: white;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.menuItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menuItem svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.menuProfileImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.menuItemCenter {
+    justify-content: center;
+}
+
+.menuDivider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 10px 0;
+}
