@@ -1,6 +1,7 @@
 .row {
-  margin-bottom: 40px;
+  margin-bottom: 80px;
   padding: 0 60px;
+  overflow: visible;
 }
 
 .title {
@@ -15,8 +16,8 @@
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  overflow-y: hidden;
-  padding: 10px 0;
+  overflow-y: visible;
+  padding: 50px 0;
   scroll-behavior: smooth;
 }
 
