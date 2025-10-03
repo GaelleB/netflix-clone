@@ -30,3 +30,19 @@ export async function fetchFromTMDB(endpoint) {
     return [];
   }
 }
+
+// Fonction pour récupérer les détails d'un film ou série
+export async function fetchMovieDetails(id, mediaType = 'movie') {
+  try {
+    const endpoint = `/${mediaType}/${id}?api_key=${API_KEY}&language=fr-FR`;
+    const response = await fetch(`${BASE_URL}${endpoint}`);
+    if (!response.ok) {
+      throw new Error('Erreur lors du fetch des détails');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Erreur détails TMDB:', error);
+    return null;
+  }
+}
