@@ -1,0 +1,62 @@
+.row {
+  margin-bottom: 40px;
+  padding: 0 60px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #e5e5e5;
+  margin-bottom: 10px;
+  font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+}
+
+.movies {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 0;
+  scroll-behavior: smooth;
+}
+
+/* Masquer la scrollbar mais garder la fonctionnalité */
+.movies::-webkit-scrollbar {
+  display: none;
+}
+
+.movies {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .row {
+    padding: 0 30px;
+    margin-bottom: 30px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .movies {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .movies {
+    gap: 4px;
+  }
+}
