@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import styles from './MovieCard.module.css';
-import { IMAGE_BASE_URL, fetchMovieDetails } from '@/utils/tmdbApi';
+import { IMAGE_BASE_URL, fetchMovieDetails, fetchMovieLogo } from '@/utils/tmdbApi';
 
 // Mapping des genres TMDB
 const genreMap = {
@@ -26,6 +26,7 @@ function formatRuntime(minutes) {
 
 export default function MovieCard({ movie }) {
   const [runtime, setRuntime] = useState(null);
+  const [logo, setLogo] = useState(null);
   const imagePath = movie.backdrop_path || movie.poster_path;
   const title = movie.title || movie.name || 'Sans titre';
   const year = movie.release_date || movie.first_air_date;
@@ -37,16 +38,24 @@ export default function MovieCard({ movie }) {
     ? movie.genre_ids.slice(0, 2).map(id => genreMap[id]).filter(Boolean).join(' • ')
     : '';
 
-  // Charger les détails pour obtenir la durée
+  // Charger les détails pour obtenir la durée et le logo
   useEffect(() => {
     let isMounted = true;
-    async function loadRuntime() {
-      const details = await fetchMovieDetails(movie.id, mediaType);
-      if (isMounted && details) {
-        setRuntime(details.runtime || details.episode_run_time?.[0]);
+    async function loadData() {
+      const [details, logoUrl] = await Promise.all([
+        fetchMovieDetails(movie.id, mediaType),
+        fetchMovieLogo(movie.id, mediaType)
+      ]);
+      if (isMounted) {
+        if (details) {
+          setRuntime(details.runtime || details.episode_run_time?.[0]);
+        }
+        if (logoUrl) {
+          setLogo(logoUrl);
+        }
       }
     }
-    loadRuntime();
+    loadData();
     return () => { isMounted = false; };
   }, [movie.id, mediaType]);
 
@@ -60,7 +69,15 @@ export default function MovieCard({ movie }) {
           alt={title}
           className={styles.image}
         />
-        <h3 className={styles.title}>{title}</h3>
+        {logo ? (
+          <img
+            src={logo}
+            alt={title}
+            className={styles.titleLogo}
+          />
+        ) : (
+          <h3 className={styles.title}>{title}</h3>
+        )}
       </div>
 
       <div className={styles.infoSection}>

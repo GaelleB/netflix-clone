@@ -46,3 +46,27 @@ export async function fetchMovieDetails(id, mediaType = 'movie') {
     return null;
   }
 }
+
+// Fonction pour récupérer le logo d'un film ou série
+export async function fetchMovieLogo(id, mediaType = 'movie') {
+  try {
+    const endpoint = `/${mediaType}/${id}/images?api_key=${API_KEY}`;
+    const response = await fetch(`${BASE_URL}${endpoint}`);
+    if (!response.ok) {
+      throw new Error('Erreur lors du fetch du logo');
+    }
+    const data = await response.json();
+
+    // Priorité : français puis anglais puis n'importe quelle langue
+    const frLogo = data.logos?.find(logo => logo.iso_639_1 === 'fr');
+    const enLogo = data.logos?.find(logo => logo.iso_639_1 === 'en');
+    const anyLogo = data.logos?.[0];
+
+    const logo = frLogo || enLogo || anyLogo;
+
+    return logo ? `https://image.tmdb.org/t/p/w500${logo.file_path}` : null;
+  } catch (error) {
+    console.error('Erreur logo TMDB:', error);
+    return null;
+  }
+}
