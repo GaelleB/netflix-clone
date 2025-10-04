@@ -4,12 +4,61 @@
   overflow: visible;
 }
 
+.titleWrapper {
+  margin-bottom: 13.16px;
+}
+
 .title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #e5e5e5;
-  margin-bottom: 0;
   font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+  font-size: 26.32px;
+  font-weight: 500;
+  line-height: 34.216px;
+  color: #e5e5e5;
+  margin: 0;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.title:hover {
+  color: #e5e5e5;
+}
+
+.exploreText {
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 12px;
+  white-space: nowrap;
+  display: inline-block;
+  color: #54b9c5;
+  overflow: hidden;
+  max-width: 0;
+  transition: max-width 0.5s ease;
+  vertical-align: middle;
+}
+
+.title:hover .exploreText {
+  max-width: 280px;
+  transition: max-width 0.4s ease 0.2s;
+}
+
+.chevron {
+  color: #54b9c5;
+  margin-left: 4px;
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: inline-block;
+}
+
+.title:hover .chevron {
+  opacity: 1;
+  transition: opacity 0.2s ease;
 }
 
 .rowContainer {
@@ -70,7 +119,6 @@
   display: flex;
   justify-content: center;
   transform: translateZ(0);
-  speak: never;
 }
 
 .arrowLeft {

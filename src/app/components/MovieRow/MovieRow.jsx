@@ -55,7 +55,13 @@ export default function MovieRow({ title, fetchUrl }) {
 
   return (
     <div className={styles.row}>
-      <h2 className={styles.title}>{title}</h2>
+      <div className={styles.titleWrapper}>
+        <h2 className={styles.title}>
+          {title}
+          <span className={styles.exploreText}>Tout explorer</span>
+          <span className={styles.chevron}>›</span>
+        </h2>
+      </div>
       <div className={styles.rowContainer}>
         {showLeftArrow && (
           <button
