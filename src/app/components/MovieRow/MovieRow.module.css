@@ -1,5 +1,5 @@
 .row {
-  margin-bottom: 0;
+  margin-bottom: 50px;
   padding: 0 60px;
   overflow: visible;
 }
@@ -74,7 +74,8 @@
   gap: 8px;
   overflow-x: auto;
   overflow-y: visible;
-  padding: 0;
+  padding: 100px 0 200px 0;
+  margin: -100px 0 -200px 0;
   scroll-behavior: smooth;
 }
 

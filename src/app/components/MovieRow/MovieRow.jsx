@@ -10,7 +10,10 @@ export default function MovieRow({ title, fetchUrl }) {
   const [movies, setMovies] = useState([]);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [canHover, setCanHover] = useState(true);
   const moviesRef = useRef(null);
+  const hoverTimeoutRef = useRef(null);
 
   useEffect(() => {
     async function loadMovies() {
@@ -51,6 +54,34 @@ export default function MovieRow({ title, fetchUrl }) {
     setTimeout(checkArrows, 300);
   };
 
+  const handleCardHover = (movieId) => {
+    if (!canHover) return;
+
+    if (hoveredCard !== null && hoveredCard !== movieId) {
+      setCanHover(false);
+      setHoveredCard(null);
+
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+
+      hoverTimeoutRef.current = setTimeout(() => {
+        setHoveredCard(movieId);
+        setCanHover(true);
+      }, 300);
+    } else {
+      setHoveredCard(movieId);
+    }
+  };
+
+  const handleCardLeave = () => {
+    setHoveredCard(null);
+    setCanHover(true);
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+  };
+
   if (!movies.length) return null;
 
   return (
@@ -79,7 +110,13 @@ export default function MovieRow({ title, fetchUrl }) {
           onScroll={checkArrows}
         >
           {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              isHovered={hoveredCard === movie.id}
+              onHover={() => handleCardHover(movie.id)}
+              onLeave={handleCardLeave}
+            />
           ))}
         </div>
 
