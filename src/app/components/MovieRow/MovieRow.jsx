@@ -12,6 +12,7 @@ export default function MovieRow({ title, fetchUrl }) {
   const [showRightArrow, setShowRightArrow] = useState(true);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [canHover, setCanHover] = useState(true);
+  const [visibleCards, setVisibleCards] = useState({ first: -1, last: -1 });
   const moviesRef = useRef(null);
   const hoverTimeoutRef = useRef(null);
 
@@ -25,6 +26,7 @@ export default function MovieRow({ title, fetchUrl }) {
 
   useEffect(() => {
     checkArrows();
+    updateVisibleCards();
   }, [movies]);
 
   const checkArrows = () => {
@@ -34,6 +36,35 @@ export default function MovieRow({ title, fetchUrl }) {
 
     setShowLeftArrow(scrollLeft > 0);
     setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1);
+  };
+
+  const updateVisibleCards = () => {
+    if (!moviesRef.current) return;
+
+    const container = moviesRef.current;
+    const cards = Array.from(container.children);
+    const containerRect = container.getBoundingClientRect();
+    
+    let firstVisible = -1;
+    let lastVisible = -1;
+
+    cards.forEach((card, index) => {
+      const cardRect = card.getBoundingClientRect();
+      
+      // Une carte est visible si au moins 75% de sa largeur est visible
+      const cardLeft = cardRect.left - containerRect.left;
+      const cardRight = cardRect.right - containerRect.left;
+      const cardWidth = cardRect.width;
+      const visibleWidth = Math.min(cardRight, containerRect.width) - Math.max(cardLeft, 0);
+      const visibilityRatio = visibleWidth / cardWidth;
+      
+      if (visibilityRatio >= 0.75) {
+        if (firstVisible === -1) firstVisible = index;
+        lastVisible = index;
+      }
+    });
+    
+    setVisibleCards({ first: firstVisible, last: lastVisible });
   };
 
   const scroll = (direction) => {
@@ -51,7 +82,10 @@ export default function MovieRow({ title, fetchUrl }) {
       behavior: 'smooth'
     });
 
-    setTimeout(checkArrows, 300);
+    setTimeout(() => {
+      checkArrows();
+      updateVisibleCards();
+    }, 300);
   };
 
   const handleCardHover = (movieId) => {
@@ -107,15 +141,20 @@ export default function MovieRow({ title, fetchUrl }) {
         <div
           className={styles.movies}
           ref={moviesRef}
-          onScroll={checkArrows}
+          onScroll={() => {
+            checkArrows();
+            updateVisibleCards();
+          }}
         >
-          {movies.map((movie) => (
+          {movies.map((movie, index) => (
             <MovieCard
               key={movie.id}
               movie={movie}
               isHovered={hoveredCard === movie.id}
               onHover={() => handleCardHover(movie.id)}
               onLeave={handleCardLeave}
+              isFirst={index === visibleCards.first}
+              isLast={index === visibleCards.last}
             />
           ))}
         </div>

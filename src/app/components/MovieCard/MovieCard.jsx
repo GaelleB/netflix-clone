@@ -24,7 +24,7 @@ function formatRuntime(minutes) {
   return `${mins}min`;
 }
 
-export default function MovieCard({ movie, isHovered = false, onHover, onLeave }) {
+export default function MovieCard({ movie, isHovered = false, onHover, onLeave, isFirst = false, isLast = false }) {
   const [runtime, setRuntime] = useState(null);
   const [logo, setLogo] = useState(null);
   const imagePath = movie.backdrop_path || movie.poster_path;
@@ -64,7 +64,7 @@ export default function MovieCard({ movie, isHovered = false, onHover, onLeave }
   return (
     <div style={{ position: 'relative', minWidth: '293.328px', margin: '0 2px' }}>
       <div
-        className={`${styles.card} ${isHovered ? styles.cardHovered : ''}`}
+        className={`${styles.card} ${isHovered ? styles.cardHovered : ''} ${isFirst ? styles.cardFirst : ''} ${isLast ? styles.cardLast : ''}`}
         onMouseEnter={onHover}
         onMouseLeave={onLeave}
       >
