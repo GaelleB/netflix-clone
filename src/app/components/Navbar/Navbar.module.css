@@ -9,7 +9,7 @@
     padding: 0 47.1875px;
     background: linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, transparent);
     transition: background-color 0.4s ease;
-    z-index: 2;
+    z-index: 100;
     font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
     font-size: 12.036px;
     line-height: 14.4432px;
