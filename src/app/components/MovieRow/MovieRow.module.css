@@ -74,8 +74,8 @@
   gap: 8px;
   overflow-x: auto;
   overflow-y: visible;
-  padding: 100px 0 200px 0;
-  margin: -100px 0 -200px 0;
+  padding: 100px 150px 200px 150px;
+  margin: -100px -150px -200px -150px;
   scroll-behavior: smooth;
 }
 
