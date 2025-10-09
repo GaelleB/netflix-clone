@@ -81,6 +81,14 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.titleLogo {
+  max-width: 400px;
+  max-height: 150px;
+  margin-bottom: 10px;
+  object-fit: contain;
+  object-position: left;
+}
+
 .description {
   display: block;
   width: 677px;

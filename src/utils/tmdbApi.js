@@ -70,3 +70,19 @@ export async function fetchMovieLogo(id, mediaType = 'movie') {
     return null;
   }
 }
+
+// Fonction pour rechercher une série par nom
+export async function searchShow(query) {
+  try {
+    const endpoint = `/search/tv?api_key=${API_KEY}&language=fr-FR&query=${encodeURIComponent(query)}`;
+    const response = await fetch(`${BASE_URL}${endpoint}`);
+    if (!response.ok) {
+      throw new Error('Erreur lors de la recherche');
+    }
+    const data = await response.json();
+    return data.results?.[0] || null;
+  } catch (error) {
+    console.error('Erreur recherche TMDB:', error);
+    return null;
+  }
+}

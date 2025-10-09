@@ -1,11 +1,29 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import styles from './Hero.module.css';
+import { searchShow, fetchMovieLogo, IMAGE_BASE_URL } from '@/utils/tmdbApi';
 
 export default function Hero() {
+  const [showData, setShowData] = useState(null);
+  const [logo, setLogo] = useState(null);
+
+  useEffect(() => {
+    async function loadBreakingBad() {
+      const show = await searchShow('Breaking Bad');
+      if (show) {
+        setShowData(show);
+        const logoUrl = await fetchMovieLogo(show.id, 'tv');
+        setLogo(logoUrl);
+      }
+    }
+    loadBreakingBad();
+  }, []);
   return (
     <div className={styles.hero}>
       <div className={styles.heroBackground}>
         <img
-          src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&q=80"
+          src={showData?.backdrop_path ? `${IMAGE_BASE_URL.replace('w500', 'original')}${showData.backdrop_path}` : "https://images.unsplash.com/photo-1594736797933-d0851ba7b724?w=1920&q=80"}
           alt="Hero background"
           className={styles.backgroundImage}
         />
@@ -22,12 +40,18 @@ export default function Hero() {
           <span className={styles.badgeText}>SÉRIE</span>
         </div>
 
-        <h1 className={styles.title}>Stranger Things</h1>
+        {logo ? (
+          <img
+            src={logo}
+            alt="Breaking Bad"
+            className={styles.titleLogo}
+          />
+        ) : (
+          <h1 className={styles.title}>{showData?.name || 'Breaking Bad'}</h1>
+        )}
 
         <p className={styles.description}>
-          Quand un jeune garçon disparaît, une petite ville découvre une affaire
-          mystérieuse, des expériences secrètes, des forces surnaturelles terrifiantes
-          et une fillette extraordinaire.
+          {showData?.overview || 'Un professeur de chimie au lycée se transforme en fabricant de méthamphétamine après avoir appris qu\'il a un cancer des poumons en phase terminale, afin de payer ses frais médicaux et d\'assurer l\'avenir financier de sa famille.'}
         </p>
 
         <div className={styles.buttonContainer}>
