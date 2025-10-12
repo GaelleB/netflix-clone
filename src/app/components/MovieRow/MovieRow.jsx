@@ -20,7 +20,8 @@ export default function MovieRow({ title, fetchUrl }) {
   useEffect(() => {
     async function loadMovies() {
       const data = await fetchFromTMDB(fetchUrl);
-      setMovies(data);
+      // Dupliquer les films pour créer un effet de boucle infinie
+      setMovies([...data, ...data]);
     }
     loadMovies();
   }, [fetchUrl]);
@@ -49,8 +50,9 @@ export default function MovieRow({ title, fetchUrl }) {
 
     const { scrollLeft, scrollWidth, clientWidth } = moviesRef.current;
 
-    setShowLeftArrow(scrollLeft > 0);
-    setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 5);
+    // Pour un carrousel infini, toujours afficher les deux flèches
+    setShowLeftArrow(true);
+    setShowRightArrow(true);
 
     // Calculer la progression du scroll (0 à 1)
     const maxScroll = scrollWidth - clientWidth;
@@ -96,13 +98,35 @@ export default function MovieRow({ title, fetchUrl }) {
     const cardWidth = firstCard.offsetWidth;
     const gap = 8;
     const scrollAmount = (cardWidth + gap) * 6;
+    const { scrollLeft, scrollWidth, clientWidth } = moviesRef.current;
 
+    // La moitié du contenu (car on a dupliqué les films)
+    const halfWidth = (scrollWidth - clientWidth) / 2;
+
+    // Scroll normal
     moviesRef.current.scrollBy({
       left: direction === 'left' ? -scrollAmount : scrollAmount,
       behavior: 'smooth'
     });
 
     setTimeout(() => {
+      const newScrollLeft = moviesRef.current.scrollLeft;
+
+      // Si on dépasse la moitié (fin de la première série), revenir au début sans animation
+      if (newScrollLeft >= halfWidth + scrollAmount) {
+        moviesRef.current.scrollTo({
+          left: newScrollLeft - halfWidth,
+          behavior: 'instant'
+        });
+      }
+      // Si on est avant le début, aller à la fin sans animation
+      else if (newScrollLeft <= 10 && direction === 'left') {
+        moviesRef.current.scrollTo({
+          left: newScrollLeft + halfWidth,
+          behavior: 'instant'
+        });
+      }
+
       checkArrows();
       updateVisibleCards();
     }, 300);
@@ -186,7 +210,7 @@ export default function MovieRow({ title, fetchUrl }) {
         >
           {movies.map((movie, index) => (
             <MovieCard
-              key={movie.id}
+              key={`${movie.id}-${index}`}
               movie={movie}
               isHovered={hoveredCard === movie.id}
               onHover={() => handleCardHover(movie.id)}
