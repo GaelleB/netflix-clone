@@ -16,15 +16,23 @@ export const requests = {
   fetchPopularSeries: `/tv/popular?api_key=${API_KEY}&language=fr-FR`,
 };
 
-// Fonction pour fetch les données
+// Fonction pour fetch les données (récupère 3 pages = ~60 résultats)
 export async function fetchFromTMDB(endpoint) {
   try {
-    const response = await fetch(`${BASE_URL}${endpoint}`);
-    if (!response.ok) {
-      throw new Error('Erreur lors du fetch TMDB');
+    const pages = [1, 2, 3];
+    const allResults = [];
+
+    for (const page of pages) {
+      const separator = endpoint.includes('?') ? '&' : '?';
+      const response = await fetch(`${BASE_URL}${endpoint}${separator}page=${page}`);
+      if (!response.ok) {
+        throw new Error('Erreur lors du fetch TMDB');
+      }
+      const data = await response.json();
+      allResults.push(...data.results);
     }
-    const data = await response.json();
-    return data.results;
+
+    return allResults;
   } catch (error) {
     console.error('Erreur TMDB:', error);
     return [];
