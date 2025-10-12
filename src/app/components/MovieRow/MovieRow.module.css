@@ -1,11 +1,31 @@
 .row {
   margin-bottom: 50px;
-  padding: 0 60px;
+  padding: 0 0 0 60px;
   overflow: visible;
 }
 
 .titleWrapper {
   margin-bottom: 13.16px;
+}
+
+.progressBarContainer {
+  display: flex;
+  gap: 1px;
+  height: 2px;
+  margin-bottom: 8px;
+  width: 80px;
+  margin-left: auto;
+  margin-right: 60px;
+}
+
+.progressSegment {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: background-color 0.3s ease;
+}
+
+.progressSegmentActive {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .title {
@@ -74,8 +94,8 @@
   gap: 8px;
   overflow-x: auto;
   overflow-y: visible;
-  padding: 100px 150px 200px 150px;
-  margin: -100px -150px -200px -150px;
+  padding: 100px 0 200px 150px;
+  margin: -100px 0 -200px -150px;
   scroll-behavior: smooth;
 }
 
@@ -149,7 +169,7 @@
 /* Tablette */
 @media (max-width: 1024px) {
   .row {
-    padding: 0 40px;
+    padding: 0 0 0 40px;
     margin-bottom: 40px;
   }
 
@@ -168,8 +188,8 @@
 
   .movies {
     gap: 6px;
-    padding: 100px 120px 200px 120px;
-    margin: -100px -120px -200px -120px;
+    padding: 100px 0 200px 120px;
+    margin: -100px 0 -200px -120px;
   }
 
   /* Garder les flèches sur tablette */
