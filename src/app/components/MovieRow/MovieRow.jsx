@@ -13,6 +13,7 @@ export default function MovieRow({ title, fetchUrl }) {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [canHover, setCanHover] = useState(true);
   const [visibleCards, setVisibleCards] = useState({ first: -1, last: -1 });
+  const [scrollProgress, setScrollProgress] = useState(0);
   const moviesRef = useRef(null);
   const hoverTimeoutRef = useRef(null);
 
@@ -36,6 +37,11 @@ export default function MovieRow({ title, fetchUrl }) {
 
     setShowLeftArrow(scrollLeft > 0);
     setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1);
+
+    // Calculer la progression du scroll (0 à 1)
+    const maxScroll = scrollWidth - clientWidth;
+    const progress = maxScroll > 0 ? scrollLeft / maxScroll : 0;
+    setScrollProgress(progress);
   };
 
   const updateVisibleCards = () => {
@@ -118,6 +124,9 @@ export default function MovieRow({ title, fetchUrl }) {
 
   if (!movies.length) return null;
 
+  // Calculer le nombre de segments (chaque segment = 6 cards)
+  const totalSegments = Math.ceil(movies.length / 6);
+
   return (
     <div className={styles.row}>
       <div className={styles.titleWrapper}>
@@ -127,6 +136,21 @@ export default function MovieRow({ title, fetchUrl }) {
           <span className={styles.chevron}>›</span>
         </h2>
       </div>
+
+      {/* Barre de progression */}
+      <div className={styles.progressBarContainer}>
+        {Array.from({ length: totalSegments }).map((_, index) => {
+          const segmentProgress = scrollProgress * totalSegments;
+          const isActive = segmentProgress >= index;
+          return (
+            <div
+              key={index}
+              className={`${styles.progressSegment} ${isActive ? styles.progressSegmentActive : ''}`}
+            />
+          );
+        })}
+      </div>
+
       <div className={styles.rowContainer}>
         {showLeftArrow && (
           <button
