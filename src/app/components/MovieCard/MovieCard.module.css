@@ -41,6 +41,11 @@
   border-radius: 4px;
 }
 
+.cardLast.cardHovered {
+  left: auto;
+  right: 0;
+}
+
 /* Image en haut */
 .imageSection {
   position: relative;
@@ -210,8 +215,8 @@
 /* Desktop */
 @media (min-width: 1025px) {
   .cardWrapper {
-    min-width: 293.328px;
-    max-width: none;
+    min-width: calc((100vw - 60px - 40px) / 6);
+    max-width: calc((100vw - 60px - 40px) / 6);
     margin: 0 2px;
   }
 }

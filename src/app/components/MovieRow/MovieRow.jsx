@@ -26,8 +26,22 @@ export default function MovieRow({ title, fetchUrl }) {
   }, [fetchUrl]);
 
   useEffect(() => {
-    checkArrows();
-    updateVisibleCards();
+    if (movies.length > 0) {
+      setTimeout(() => {
+        checkArrows();
+        updateVisibleCards();
+      }, 100);
+    }
+  }, [movies]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      checkArrows();
+      updateVisibleCards();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [movies]);
 
   const checkArrows = () => {
@@ -36,7 +50,7 @@ export default function MovieRow({ title, fetchUrl }) {
     const { scrollLeft, scrollWidth, clientWidth } = moviesRef.current;
 
     setShowLeftArrow(scrollLeft > 0);
-    setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1);
+    setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 5);
 
     // Calculer la progression du scroll (0 à 1)
     const maxScroll = scrollWidth - clientWidth;
@@ -163,7 +177,7 @@ export default function MovieRow({ title, fetchUrl }) {
         )}
 
         <div
-          className={styles.movies}
+          className={`${styles.movies} ${hoveredCard !== null ? styles.moviesLocked : ''}`}
           ref={moviesRef}
           onScroll={() => {
             checkArrows();
