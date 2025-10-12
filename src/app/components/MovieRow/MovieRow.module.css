@@ -144,33 +144,86 @@
   scrollbar-width: none;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive Media Queries */
+
+/* Tablette */
+@media (max-width: 1024px) {
   .row {
-    padding: 0 30px;
-    margin-bottom: 30px;
+    padding: 0 40px;
+    margin-bottom: 40px;
   }
 
   .title {
-    font-size: 18px;
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .exploreText {
+    font-size: 15px;
+  }
+
+  .chevron {
+    font-size: 22px;
   }
 
   .movies {
     gap: 6px;
+    padding: 100px 120px 200px 120px;
+    margin: -100px -120px -200px -120px;
+  }
+
+  /* Garder les flèches sur tablette */
+  .arrow {
+    width: 35px;
+  }
+
+  .arrowLeft {
+    left: -50px;
+  }
+
+  .arrowRight {
+    right: -50px;
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile */
+@media (max-width: 768px) {
   .row {
     padding: 0 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+  }
+
+  .titleWrapper {
+    margin-bottom: 10px;
   }
 
   .title {
-    font-size: 16px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .exploreText {
+    font-size: 13px;
+    margin-left: 8px;
+  }
+
+  .title:hover .exploreText {
+    max-width: 200px;
+  }
+
+  .chevron {
+    font-size: 20px;
+    margin-left: 3px;
   }
 
   .movies {
     gap: 4px;
+    padding: 50px 20px 100px 20px;
+    margin: -50px -20px -100px -20px;
+  }
+
+  /* Masquer les flèches sur mobile (scroll tactile uniquement) */
+  .arrow {
+    display: none;
   }
 }

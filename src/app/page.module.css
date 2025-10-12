@@ -34,6 +34,26 @@
   grid-row-start: 2;
 }
 
+.moviesContainer {
+  background-color: #141414;
+  padding-top: 20px;
+  margin-top: -50px;
+}
+
+@media (max-width: 768px) {
+  .moviesContainer {
+    padding-top: 10px;
+    margin-top: -80px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .moviesContainer {
+    padding-top: 15px;
+    margin-top: -60px;
+  }
+}
+
 .main ol {
   font-family: var(--font-geist-mono);
   padding-left: 0;

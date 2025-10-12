@@ -426,3 +426,199 @@
     background-color: rgba(255, 255, 255, 0.2);
     margin: 10px 0;
 }
+
+/* Menu Parcourir (mobile/tablette) */
+.browseMenuContainer {
+  position: relative;
+  display: none;
+}
+
+.browseButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+}
+
+.browseArrow {
+  transition: transform 0.3s ease;
+}
+
+.browseArrowRotated {
+  transform: rotate(180deg);
+}
+
+.browseDropdown {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 200px;
+  padding: 8px 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.browseDropdown::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(255, 255, 255, 0.2);
+}
+
+.browseItem {
+  color: #e5e5e5;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+  transition: background-color 0.2s ease;
+}
+
+.browseItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Media Queries */
+
+/* Tablette */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 30px;
+  }
+
+  .logo {
+    height: 40px;
+  }
+
+  .navbarRight {
+    right: 30px;
+  }
+
+  /* Masquer les liens desktop, afficher menu Parcourir */
+  .navLinks {
+    display: none;
+  }
+
+  .browseMenuContainer {
+    display: block;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .logo {
+    height: 25px;
+    margin-right: 10px;
+    margin-top: 0;
+  }
+
+  .navbarLeft {
+    gap: 10px;
+  }
+
+  /* Masquer tous les liens sur mobile */
+  .navLinks {
+    display: none;
+  }
+
+  .browseMenuContainer {
+    display: block;
+  }
+
+  .navbarRight {
+    right: 16px;
+    gap: 16px;
+    height: 56px;
+    margin-right: 0;
+  }
+
+  /* Masquer le texte "Jeunesse" et la recherche sur mobile */
+  .jeunesseText,
+  .searchTab {
+    display: none;
+  }
+
+  /* Icônes plus petites */
+  .icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .profileImg {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Ajuster le menu de notification pour mobile */
+  .notificationMenu {
+    width: 320px;
+    right: -10px;
+  }
+
+  .notificationContent {
+    max-width: 200px;
+    width: 200px;
+    padding: 12px 12px 12px 0;
+  }
+
+  .notificationTitle,
+  .notificationSubtitle {
+    font-size: 14px;
+  }
+
+  .notificationTime {
+    font-size: 11px;
+  }
+
+  .multiLandingStackSpaceHolder {
+    width: 90px;
+    height: 50px;
+  }
+
+  .multiLandingStack1,
+  .multiLandingStack2 {
+    width: 85px;
+    height: 45px;
+  }
+
+  .titleCard {
+    width: 85px;
+    height: 45px;
+  }
+
+  /* Menu profil responsive */
+  .profileMenu {
+    min-width: 180px;
+    width: 180px;
+  }
+
+  .menuItem {
+    font-size: 13px;
+    padding: 8px 15px;
+  }
+
+  .menuProfileImg {
+    width: 28px;
+    height: 28px;
+  }
+}

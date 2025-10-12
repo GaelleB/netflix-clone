@@ -1,8 +1,9 @@
 .card {
-  min-width: 293.328px;
+  min-width: 140px;
+  max-width: 140px;
   cursor: pointer;
   z-index: 1;
-  margin: 0 2px;
+  margin: 0;
   transform-origin: center center;
   transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s 0.15s;
   border-radius: 4px;
@@ -11,7 +12,9 @@
   display: flex;
   flex-direction: column;
   will-change: transform;
+  flex-shrink: 0;
 }
+
 
 .cardFirst {
   transform-origin: left center;
@@ -95,6 +98,7 @@
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
 }
@@ -195,21 +199,149 @@
   transform: scale(1.1);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive Media Queries */
+
+/* Desktop */
+@media (min-width: 1025px) {
   .card {
-    min-width: 180px;
-  }
-  .imageSection {
-    height: 100px;
+    min-width: 293.328px;
+    max-width: none;
+    margin: 0 2px;
   }
 }
 
-@media (max-width: 480px) {
+/* Tablette */
+@media (max-width: 1024px) and (min-width: 769px) {
   .card {
-    min-width: 150px;
+    min-width: 200px;
+    max-width: 200px;
   }
+
   .imageSection {
-    height: 85px;
+    height: 120px;
+  }
+
+  /* Scale réduit au hover sur tablette */
+  .cardHovered {
+    transform: scale(1.2) translateY(0);
+  }
+
+  .title {
+    font-size: 12px;
+  }
+
+  .titleLogo {
+    max-height: 45px;
+  }
+
+  .infoSection {
+    padding: 10px;
+  }
+
+  .year,
+  .duration,
+  .quality,
+  .separator {
+    font-size: 10px;
+  }
+
+  .quality {
+    font-size: 9px;
+  }
+
+  .genres {
+    font-size: 10px;
+  }
+
+  .playButton,
+  .iconButton {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .card {
+    min-width: 140px !important;
+    max-width: 140px !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+  }
+
+  .imageSection {
+    height: 80px;
+  }
+
+  /* Scale réduit au hover sur mobile */
+  .cardHovered {
+    transform: scale(1.1) translateY(0);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+  }
+
+  .title {
+    font-size: 10px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    line-height: 1.2;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .titleLogo {
+    max-height: 35px;
+    max-width: calc(100% - 10px);
+    bottom: 5px;
+    left: 5px;
+  }
+
+  .infoSection {
+    padding: 7px;
+    gap: 5px;
+  }
+
+  .metadata {
+    gap: 2px;
+  }
+
+  .info {
+    gap: 3px;
+  }
+
+  .year,
+  .duration,
+  .quality,
+  .separator {
+    font-size: 9px;
+  }
+
+  .quality {
+    font-size: 8px;
+    padding: 0 3px;
+  }
+
+  .genres {
+    font-size: 9px;
+  }
+
+  .buttons {
+    gap: 5px;
+    margin-top: 5px;
+  }
+
+  .playButton,
+  .iconButton {
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
+    border-width: 1.5px;
+  }
+
+  /* Simplifier les effets hover sur mobile */
+  .playButton:hover,
+  .iconButton:hover {
+    transform: scale(1.05);
   }
 }

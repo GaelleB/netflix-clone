@@ -7,6 +7,7 @@ export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const [showNotifications, setShowNotifications] = useState(false);
+    const [showBrowseMenu, setShowBrowseMenu] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -26,11 +27,38 @@ export default function Navbar() {
             <div className={styles.navbarContent}>
                 {/* Logo */}
                 <div className={styles.navbarLeft}>
-                    <img 
-                        src="/images/netflix-logo.png" 
-                        alt="Netflix" 
+                    <img
+                        src="/images/netflix-logo.png"
+                        alt="Netflix"
                         className={styles.logo}
                     />
+
+                    {/* Menu Parcourir pour mobile/tablette */}
+                    <div
+                        className={styles.browseMenuContainer}
+                        onMouseEnter={() => setShowBrowseMenu(true)}
+                        onMouseLeave={() => setShowBrowseMenu(false)}
+                        onClick={() => setShowBrowseMenu(!showBrowseMenu)}
+                    >
+                        <button className={styles.browseButton}>
+                            Parcourir
+                            <svg className={`${styles.browseArrow} ${showBrowseMenu ? styles.browseArrowRotated : ''}`} width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 6L8 10L4 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </button>
+
+                        {showBrowseMenu && (
+                            <div className={styles.browseDropdown}>
+                                <a href="#" className={styles.browseItem}>Accueil</a>
+                                <a href="#" className={styles.browseItem}>Séries</a>
+                                <a href="#" className={styles.browseItem}>Films</a>
+                                <a href="#" className={styles.browseItem}>Nouveautés les plus regardées</a>
+                                <a href="#" className={styles.browseItem}>Ma liste</a>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Liens desktop */}
                     <ul className={styles.navLinks}>
                         <li><a href="#" className={styles.active}>Accueil</a></li>
                         <li><a href="#">Séries</a></li>

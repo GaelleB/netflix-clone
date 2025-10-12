@@ -62,12 +62,11 @@ export default function MovieCard({ movie, isHovered = false, onHover, onLeave, 
   if (!imagePath) return null;
 
   return (
-    <div style={{ position: 'relative', minWidth: '293.328px', margin: '0 2px' }}>
-      <div
-        className={`${styles.card} ${isHovered ? styles.cardHovered : ''} ${isFirst ? styles.cardFirst : ''} ${isLast ? styles.cardLast : ''}`}
-        onMouseEnter={onHover}
-        onMouseLeave={onLeave}
-      >
+    <div
+      className={`${styles.card} ${isHovered ? styles.cardHovered : ''} ${isFirst ? styles.cardFirst : ''} ${isLast ? styles.cardLast : ''}`}
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+    >
       <div className={styles.imageSection}>
         <img
           src={`${IMAGE_BASE_URL}${imagePath}`}
@@ -120,7 +119,6 @@ export default function MovieCard({ movie, isHovered = false, onHover, onLeave, 
           {genres && <p className={styles.genres}>{genres}</p>}
         </div>
       </div>
-    </div>
     </div>
   );
 }

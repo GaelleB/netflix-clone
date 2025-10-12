@@ -2,13 +2,14 @@ import Navbar from '@/app/components/Navbar/Navbar';
 import Hero from '@/app/components/Hero/Hero';
 import MovieRow from '@/app/components/MovieRow/MovieRow';
 import { requests } from '@/utils/tmdbApi';
+import styles from './page.module.css';
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <Hero />
-      <main style={{ backgroundColor: '#141414', paddingTop: '20px' }}>
+      <main className={styles.moviesContainer}>
         <MovieRow title="Tendances actuelles" fetchUrl={requests.fetchTrending} />
         <MovieRow title="Films populaires" fetchUrl={requests.fetchPopularMovies} />
         <MovieRow title="Séries populaires" fetchUrl={requests.fetchPopularSeries} />

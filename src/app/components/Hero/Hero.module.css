@@ -225,64 +225,188 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
-  .heroContent {
-    max-width: 60%;
-  }
+/* Responsive Media Queries */
 
-  .title {
-    font-size: 60px;
-  }
-
-  .description {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 768px) {
-  .heroContent {
-    max-width: 80%;
-  }
-
-  .title {
-    font-size: 40px;
-  }
-
-  .description {
-    font-size: 14px;
-  }
-
-  .playButton,
-  .infoButton {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  .ageRating {
-    bottom: 40px;
-    right: 30px;
-    width: 40px;
-    height: 40px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
+/* Tablette */
+@media (max-width: 1024px) {
   .hero {
+    height: 80vh;
+  }
+
+  .heroBackground {
     height: 70vh;
   }
 
   .heroContent {
+    max-width: 60%;
+    padding: 0 40px 100px 40px;
+  }
+
+  .title {
+    font-size: 50px;
+    width: 100%;
+  }
+
+  .titleLogo {
+    max-width: 350px;
+    max-height: 130px;
+  }
+
+  .description {
+    font-size: 20px;
+    width: 100%;
+    height: auto;
+  }
+
+  .buttonContainer {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .playButton,
+  .infoButton {
+    width: 160px;
+    height: 48px;
+    padding: 10px 24px;
+  }
+
+  .buttonText {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .badge {
+    gap: 10px;
+  }
+
+  .nLogo {
+    height: 45px;
+  }
+
+  .badgeText {
+    font-size: 16px;
+  }
+
+  .ageRating {
+    bottom: auto;
+    top: 70%;
+    transform: translateY(-50%);
+    right: 0;
+    height: 35px;
+    width: 85px;
+    padding: 6px 45px 6px 10px;
+    font-size: 17px;
+  }
+
+  .maturityNumber {
+    font-size: 17px;
+    line-height: 22px;
+    height: 22px;
+    width: auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+  }
+
+  .heroBackground {
+    height: 50vh;
+  }
+
+  .heroContent {
     max-width: 90%;
-    padding: 0 20px;
+    padding: 0 20px 60px 20px;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .badge {
+    gap: 8px;
+    margin-bottom: -15px;
+  }
+
+  .nLogo {
+    height: 35px;
+  }
+
+  .badgeText {
+    font-size: 14px;
+    letter-spacing: 2px;
   }
 
   .title {
     font-size: 32px;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .titleLogo {
+    max-width: 250px;
+    max-height: 100px;
+    margin-bottom: 5px;
   }
 
   .description {
-    font-size: 13px;
+    font-size: 16px;
+    width: 100%;
+    height: auto;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .buttonContainer {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    gap: 8px;
+  }
+
+  .playButton,
+  .infoButton {
+    width: 120px;
+    height: 36px;
+    padding: 6px 12px;
+    margin: 0;
+    gap: 8px;
+  }
+
+  .buttonText {
+    font-size: 14px;
+    line-height: 20px;
+    height: auto;
+  }
+
+  .icon {
+    font-size: 14px;
+  }
+
+  .infoButton {
+    width: 140px;
+  }
+
+  .ageRating {
+    bottom: auto;
+    top: 70%;
+    transform: translateY(-50%);
+    right: 0;
+    height: 30px;
+    width: 70px;
+    padding: 5px 35px 5px 8px;
+    font-size: 14px;
+    border-left: 2px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .maturityNumber {
+    font-size: 14px;
+    line-height: 18px;
+    height: 18px;
+    width: auto;
   }
 }
