@@ -1,9 +1,16 @@
-.card {
+.cardWrapper {
+  position: relative;
   min-width: 140px;
   max-width: 140px;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.card {
+  position: relative;
+  width: 100%;
   cursor: pointer;
   z-index: 1;
-  margin: 0;
   transform-origin: center center;
   transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s 0.15s;
   border-radius: 4px;
@@ -12,7 +19,6 @@
   display: flex;
   flex-direction: column;
   will-change: transform;
-  flex-shrink: 0;
 }
 
 
@@ -203,7 +209,7 @@
 
 /* Desktop */
 @media (min-width: 1025px) {
-  .card {
+  .cardWrapper {
     min-width: 293.328px;
     max-width: none;
     margin: 0 2px;
