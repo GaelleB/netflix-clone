@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import styles from './Hero.module.css';
 import { searchShow, fetchMovieLogo, IMAGE_BASE_URL } from '@/utils/tmdbApi';
 
@@ -32,10 +33,13 @@ export default function Hero() {
 
       <div className={styles.heroContent}>
         <div className={styles.badge}>
-          <img
+          <Image
             src="/images/netflix-symbol.png"
             alt="Netflix N logo"
             className={styles.nLogo}
+            width={55}
+            height={55}
+            priority
           />
           <span className={styles.badgeText}>SÉRIE</span>
         </div>

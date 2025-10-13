@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
@@ -27,10 +28,13 @@ export default function Navbar() {
             <div className={styles.navbarContent}>
                 {/* Logo */}
                 <div className={styles.navbarLeft}>
-                    <img
+                    <Image
                         src="/images/netflix-logo.png"
                         alt="Netflix"
                         className={styles.logo}
+                        width={93}
+                        height={25}
+                        priority
                     />
 
                     {/* Menu Parcourir pour mobile/tablette */}
