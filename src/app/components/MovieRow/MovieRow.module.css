@@ -8,15 +8,18 @@
   margin-bottom: 5px;
   position: relative;
   z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .progressBarContainer {
   display: flex;
   gap: 1px;
   height: 2px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   width: 80px;
-  margin-left: auto;
+  margin-left: 0px;
   margin-right: 60px;
 }
 
@@ -191,7 +194,19 @@
 @media (max-width: 1024px) {
   .row {
     padding: 0 0 0 40px;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
+  }
+
+  .titleWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .progressBarContainer {
+    margin-right: 40px;
+    margin-bottom: 0px;
+    margin-left: 0px;
   }
 
   .title {

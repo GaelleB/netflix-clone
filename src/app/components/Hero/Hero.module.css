@@ -239,21 +239,21 @@
 
   .heroContent {
     max-width: 60%;
-    padding: 0 40px 120px 40px;
+    padding: 0 40px 220px 40px;
   }
 
   .title {
-    font-size: 42px;
+    font-size: 36px;
     width: 100%;
   }
 
   .titleLogo {
-    max-width: 300px;
-    max-height: 110px;
+    max-width: 260px;
+    max-height: 95px;
   }
 
   .description {
-    font-size: 18px;
+    font-size: 16px;
     width: 100%;
     height: auto;
   }
@@ -265,14 +265,14 @@
 
   .playButton,
   .infoButton {
-    width: 160px;
-    height: 48px;
-    padding: 10px 24px;
+    width: 140px;
+    height: 42px;
+    padding: 8px 20px;
   }
 
   .buttonText {
-    font-size: 18px;
-    line-height: 26px;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .badge {
@@ -280,28 +280,32 @@
   }
 
   .nLogo {
-    height: 40px;
+    height: 35px;
   }
 
   .badgeText {
-    font-size: 14px;
+    font-size: 13px;
+  }
+
+  .icon {
+    font-size: 16px;
   }
 
   .ageRating {
     bottom: auto;
-    top: 85%;
+    top: 75%;
     transform: translateY(-50%);
     right: 0;
-    height: 28px;
-    width: 70px;
-    padding: 5px 38px 5px 8px;
-    font-size: 12px;
+    height: 30px;
+    width: 78px;
+    padding: 5px 42px 5px 10px;
+    font-size: 13px;
   }
 
   .maturityNumber {
-    font-size: 12px;
-    line-height: 16px;
-    height: 16px;
+    font-size: 13px;
+    line-height: 18px;
+    height: 18px;
     width: auto;
   }
 }

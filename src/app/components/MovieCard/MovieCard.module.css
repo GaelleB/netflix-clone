@@ -223,7 +223,7 @@
 
 /* Tablette */
 @media (max-width: 1024px) and (min-width: 769px) {
-  .card {
+  .cardWrapper {
     min-width: 200px;
     max-width: 200px;
   }
