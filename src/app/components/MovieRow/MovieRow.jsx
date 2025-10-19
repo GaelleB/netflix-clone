@@ -20,8 +20,8 @@ export default function MovieRow({ title, fetchUrl }) {
   useEffect(() => {
     async function loadMovies() {
       const data = await fetchFromTMDB(fetchUrl);
-      // Limiter à 12 films et les dupliquer pour créer un effet de boucle infinie
-      const limitedData = data.slice(0, 12);
+      // Limiter à 30 films (5 segments x 6 cards) et les dupliquer pour créer un effet de boucle infinie
+      const limitedData = data.slice(0, 30);
       setMovies([...limitedData, ...limitedData]);
     }
     loadMovies();
@@ -55,9 +55,14 @@ export default function MovieRow({ title, fetchUrl }) {
     setShowLeftArrow(true);
     setShowRightArrow(true);
 
-    // Calculer la progression du scroll (0 à 1)
+    // Calculer la progression du scroll pour un carrousel infini
+    // On normalise par rapport à la moitié du contenu (car les films sont dupliqués)
     const maxScroll = scrollWidth - clientWidth;
-    const progress = maxScroll > 0 ? scrollLeft / maxScroll : 0;
+    const halfWidth = maxScroll / 2;
+
+    // Normaliser scrollLeft pour qu'il boucle entre 0 et halfWidth
+    const normalizedScrollLeft = scrollLeft % halfWidth;
+    const progress = halfWidth > 0 ? normalizedScrollLeft / halfWidth : 0;
     setScrollProgress(progress);
   };
 
@@ -172,7 +177,8 @@ export default function MovieRow({ title, fetchUrl }) {
   if (!movies.length) return null;
 
   // Calculer le nombre de segments (chaque segment = 6 cards)
-  const totalSegments = Math.ceil(movies.length / 6);
+  // On divise par 2 car les films sont dupliqués pour le carrousel infini
+  const totalSegments = Math.ceil(movies.length / 2 / 6);
 
   return (
     <div className={styles.row}>
