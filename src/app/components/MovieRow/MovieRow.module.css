@@ -5,16 +5,16 @@
 }
 
 .titleWrapper {
-  margin-bottom: 13.16px;
+  margin-bottom: 5px;
   position: relative;
-  z-index: 10; 
+  z-index: 10;
 }
 
 .progressBarContainer {
   display: flex;
   gap: 1px;
   height: 2px;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   width: 80px;
   margin-left: auto;
   margin-right: 60px;
@@ -184,16 +184,16 @@
   }
 
   .title {
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 18px;
+    line-height: 24px;
   }
 
   .exploreText {
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .chevron {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .movies {
@@ -224,16 +224,25 @@
   }
 
   .titleWrapper {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .progressBarContainer {
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
   }
 
   .title {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 16px;
+    line-height: 22px;
   }
 
   .exploreText {
-    font-size: 13px;
+    font-size: 12px;
     margin-left: 8px;
   }
 
@@ -242,7 +251,7 @@
   }
 
   .chevron {
-    font-size: 20px;
+    font-size: 18px;
     margin-left: 3px;
   }
 
