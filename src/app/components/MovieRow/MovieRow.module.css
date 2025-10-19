@@ -102,7 +102,7 @@
 
 .movies {
   display: flex;
-  gap: 8px;
+  gap: 2px;
   overflow-x: auto;
   overflow-y: visible;
   padding: 100px 0 200px 150px;
