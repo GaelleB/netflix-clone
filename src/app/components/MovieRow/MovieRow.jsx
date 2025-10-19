@@ -188,20 +188,20 @@ export default function MovieRow({ title, fetchUrl }) {
           <span className={styles.exploreText}>Tout explorer</span>
           <span className={styles.chevron}>›</span>
         </h2>
-      </div>
 
-      {/* Barre de progression */}
-      <div className={styles.progressBarContainer}>
-        {Array.from({ length: totalSegments }).map((_, index) => {
-          const segmentProgress = scrollProgress * totalSegments;
-          const isActive = segmentProgress >= index;
-          return (
-            <div
-              key={index}
-              className={`${styles.progressSegment} ${isActive ? styles.progressSegmentActive : ''}`}
-            />
-          );
-        })}
+        {/* Barre de progression */}
+        <div className={styles.progressBarContainer}>
+          {Array.from({ length: totalSegments }).map((_, index) => {
+            const segmentProgress = scrollProgress * totalSegments;
+            const isActive = segmentProgress >= index;
+            return (
+              <div
+                key={index}
+                className={`${styles.progressSegment} ${isActive ? styles.progressSegmentActive : ''}`}
+              />
+            );
+          })}
+        </div>
       </div>
 
       <div className={styles.rowContainer}>
