@@ -161,6 +161,14 @@ export default function MovieRow({ title, fetchUrl }) {
     }
   };
 
+  const handleArrowHover = () => {
+    setHoveredCard(null);
+    setCanHover(true);
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+  };
+
   if (!movies.length) return null;
 
   // Calculer le nombre de segments (chaque segment = 6 cards)
@@ -195,6 +203,7 @@ export default function MovieRow({ title, fetchUrl }) {
           <button
             className={`${styles.arrow} ${styles.arrowLeft}`}
             onClick={() => scroll('left')}
+            onMouseEnter={handleArrowHover}
             aria-label="Scroll left"
           >
             <FaChevronLeft />
@@ -226,6 +235,7 @@ export default function MovieRow({ title, fetchUrl }) {
           <button
             className={`${styles.arrow} ${styles.arrowRight}`}
             onClick={() => scroll('right')}
+            onMouseEnter={handleArrowHover}
             aria-label="Scroll right"
           >
             <FaChevronRight />
