@@ -20,8 +20,9 @@ export default function MovieRow({ title, fetchUrl }) {
   useEffect(() => {
     async function loadMovies() {
       const data = await fetchFromTMDB(fetchUrl);
-      // Dupliquer les films pour créer un effet de boucle infinie
-      setMovies([...data, ...data]);
+      // Limiter à 12 films et les dupliquer pour créer un effet de boucle infinie
+      const limitedData = data.slice(0, 12);
+      setMovies([...limitedData, ...limitedData]);
     }
     loadMovies();
   }, [fetchUrl]);
